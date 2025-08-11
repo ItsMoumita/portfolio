@@ -150,7 +150,7 @@ function ProjectItem({ p, index }) {
 
 export default function Projects() {
     return (
-        <section id="projects" className="relative bg-transparent text-white">
+        <section id="projects" className="relative bg-transparent text-white/90">
             <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 md:py-24">
                 <motion.h1
                     initial={{ opacity: 0, y: 8 }}
@@ -158,9 +158,9 @@ export default function Projects() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
                     className="text-center italic font-extrabold leading-tight tracking-tight
-               text-[2rem] sm:text-[2rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] 2xl:text-[6rem] mb-16"
+               text-[2rem] sm:text-[2rem] md:text-[3rem] lg:text-[4rem] mb-16"
                 >
-                    Projects
+                   My Recent Projects
                 </motion.h1>
 
                 <div className="mt-10 space-y-20">
