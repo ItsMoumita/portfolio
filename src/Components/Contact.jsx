@@ -4,12 +4,11 @@ import { FaGithub, FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 
 export default function Contact() {
   // Replace with your actual info
-  const EMAIL = 'you@example.com';
-  const LINKEDIN = 'https://www.linkedin.com/in/your-profile';
-  const GITHUB = 'https://github.com/your-username';
-  const FACEBOOK = 'https://facebook.com/your-username';
-  const WHATSAPP = 'https://wa.me/8801XXXXXXXXX'; // include country code
-  const LOCATION = 'Your City, Country';
+  const EMAIL = 'moumitaaabd@gmail.com';
+  const LINKEDIN = 'https://www.linkedin.com/feed/';
+  const GITHUB = 'https://github.com/ItsMoumita';
+  const FACEBOOK = 'https://www.facebook.com/ahamed.moumita';
+  const LOCATION = 'Dhaka, Bangladesh';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +20,8 @@ export default function Contact() {
     const subject = encodeURIComponent(`Portfolio Contact from ${name || 'Visitor'}`);
     const body = encodeURIComponent(`${message}\n\nReply to: ${email || EMAIL}`);
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+
+     setTimeout(() => form.reset(), 0);
   };
 
   return (
@@ -71,7 +72,6 @@ export default function Contact() {
               <SocialIcon href={GITHUB} label="GitHub" icon={FaGithub} color="#EA4335"  />
               <SocialIcon href={LINKEDIN} label="LinkedIn" icon={FaLinkedin} color="#0A66C2" />
               <SocialIcon href={FACEBOOK} label="Facebook" icon={FaFacebook} color="#1877F2" />
-              <SocialIcon href={WHATSAPP} label="WhatsApp" icon={FaWhatsapp} color="#25D366" />
               <SocialIcon href={`mailto:${EMAIL}`} label="Mail" icon={Mail} color="#EA4335" />
             </div>
           </motion.div>
@@ -88,7 +88,7 @@ export default function Contact() {
               <Input label="Name" name="name" placeholder="Your name" />
               <Input label="Email" name="email" type="email" placeholder="you@example.com" />
               {/* No general queries dropdown */}
-              <Textarea label="Message" name="message" placeholder="Write your message..." rows={6} />
+              <Textarea label="Message" name="message" placeholder="Write your message..." rows={4} />
 
               {/* White capsule button like navbar, no shimmer */}
               <button
