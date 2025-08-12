@@ -1,41 +1,41 @@
-// src/components/Loader.jsx
-import { useEffect, useRef, useState } from 'react';
+// src/Components/Loader.jsx
+import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import helloAnimation from '../assets/hello_lottie.json'; 
+import helloAnimation from '../assets/hello_lottie.json';
 
-export default function Loader({ onDone }) {
-  const [show, setShow] = useState(true);
-  const lottieRef = useRef(null);
+export default function Loader({ onDone, minTime = 800 }) {
+  const start = useRef(Date.now());
 
+  // Lock scroll while loader visible
   useEffect(() => {
-    const anim = lottieRef.current;
-    if (!anim) return;
-    const handleComplete = () => setShow(false);
-    anim.addEventListener('complete', handleComplete);
-    return () => anim.removeEventListener('complete', handleComplete);
+    document.documentElement.classList.add('overflow-hidden');
+    return () => document.documentElement.classList.remove('overflow-hidden');
   }, []);
 
+  // Lottie complete -> wait minTime -> tell parent to unmount
+  const handleComplete = () => {
+    const elapsed = Date.now() - start.current;
+    const wait = Math.max(0, minTime - elapsed);
+    setTimeout(onDone, wait);
+  };
+
   return (
-    <AnimatePresence mode="wait" onExitComplete={() => onDone?.()}>
-      {show && (
-        <motion.div
-          initial={{ opacity: 1, scale: 1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.75 }}   // zoom-out
-          transition={{ duration: 0.6, ease: 'easeInOut' }}
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-white"
-          aria-busy="true"
-        >
-          <Lottie
-            lottieRef={lottieRef}
-            animationData={helloAnimation}
-            loop={false}
-            autoplay
-            style={{ width: 240, height: 240 }}
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <motion.div
+      className="fixed inset-0 z-[9999] grid place-items-center bg-black/70 backdrop-blur-md"
+      initial={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.7 }}         // bigger zoom-out so it's obvious
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      style={{ transformOrigin: '50% 50%', willChange: 'transform, opacity' }}
+    >
+      <Lottie
+        animationData={helloAnimation}
+        autoplay
+        loop={false}
+        onComplete={handleComplete}
+        style={{ width: 240, height: 240 }}
+      />
+    </motion.div>
   );
 }

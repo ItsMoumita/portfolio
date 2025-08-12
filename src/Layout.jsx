@@ -5,6 +5,8 @@ import Footer from './Components/Footer';
 
 
 const Layout = () => {
+
+  
     return (
         <div className="min-h-screen w-full relative">
             {/* Azure Depths */}

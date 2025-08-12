@@ -3,6 +3,7 @@ import {
 } from "react-router";
 import Layout from "../Layout";
 import Home from "../Pages/Home";
+import Resume from "../Pages/Resume";
 
 
 export const router = createBrowserRouter([
@@ -13,6 +14,11 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home
+      },
+      
+      {
+        path: "resume",
+        Component: Resume
       },
       
     ]
