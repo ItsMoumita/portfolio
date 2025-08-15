@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative bg-transparent text-white">
+    <section id="contact" className="relative scroll-mt-24 bg-transparent text-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Left: heading + lines + socials */}

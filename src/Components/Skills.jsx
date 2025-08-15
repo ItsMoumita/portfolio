@@ -133,7 +133,7 @@ const GlowingOrbitPath = memo(({ radius, glow = 'indigo', animationDelay = 0 }) 
 
   return (
     <div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+      className="absolute scroll-mt-24 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
       style={{ width: `${radius * 2}px`, height: `${radius * 2}px`, animationDelay: `${animationDelay}s` }}
     >
       <div

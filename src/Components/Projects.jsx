@@ -150,7 +150,7 @@ function ProjectItem({ p, index }) {
 
 export default function Projects() {
     return (
-        <section id="projects" className="relative bg-transparent text-white/90">
+        <section id="projects" className="relative scroll-mt-24 bg-transparent text-white/90">
             <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 md:py-24">
                 <motion.h1
                     initial={{ opacity: 0, y: 8 }}
