@@ -101,7 +101,7 @@ export default function About() {
                 <h4 className="text-sm uppercase tracking-wider text-zinc-400">Quick facts</h4>
                 <ul className="mt-3 space-y-2 text-zinc-200">
                   <li>• CSE student</li>
-                  <li>• Web developer (React, Tailwind)</li>
+                  <li>• Web developer</li>
                   <li>• Loves new tech and learning</li>
                 </ul>
               </div>
@@ -110,7 +110,7 @@ export default function About() {
               <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
                 <h4 className="text-sm uppercase tracking-wider text-zinc-400">What I build</h4>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {['Landing pages', 'Dashboards', 'Reusable components', 'Animations'].map((t) => (
+                  {['Responsive website','Landing pages', 'Dashboards', 'Reusable components', 'Animations'].map((t) => (
                     <span
                       key={t}
                       className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/90"

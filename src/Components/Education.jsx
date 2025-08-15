@@ -36,7 +36,8 @@ export default function Education() {
     <section id="education" className="scroll-mt-24 text-white">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16 md:py-20">
         <header className="mb-8 sm:mb-10 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+          <h2 className="text-center italic font-extrabold leading-tight tracking-tight
+                     text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem]">
             Education
           </h2>
           <p className="mt-3 text-zinc-300 max-w-2xl mx-auto">

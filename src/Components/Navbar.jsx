@@ -142,7 +142,7 @@ export default function Navbar() {
         <nav className="mt-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
           <div
             ref={barRef}
-            className="flex h-14 md:h-16 items-center justify-between px-3 md:px-5"
+            className="flex h-14 md:h-16 items-center justify-between px-3 lg:px-5"
           >
             {/* Brand */}
             <a
@@ -155,7 +155,7 @@ export default function Navbar() {
             </a>
 
             {/* Desktop links */}
-            <ul className="hidden md:flex items-center gap-1">
+            <ul className="hidden lg:flex items-center gap-1">
               {links.map((link) => {
                 const isActive = active === link.id;
                 return (
@@ -187,7 +187,7 @@ export default function Navbar() {
             <a
               href="/resume.pdf"
               download
-              className="hidden md:inline-flex items-center gap-2 rounded-full border border-white/10 bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-white/90"
+              className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-white/90"
             >
               <Download size={16} />
               Resume
@@ -195,7 +195,7 @@ export default function Navbar() {
 
             {/* Mobile toggle */}
             <button
-              className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white"
+              className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white"
               onClick={() => setOpen((o) => !o)}
               aria-label="Toggle menu"
               aria-expanded={open}
@@ -213,7 +213,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18 }}
-              className="mt-2 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md md:hidden"
+              className="mt-2 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md lg:hidden"
             >
               <ul className="px-2 py-2">
                 {links.map((link) => {
