@@ -17,7 +17,6 @@ const Home = () => {
         <Projects />
          <Education></Education>
         <Contact />
-
       </main>
     </div>
   );

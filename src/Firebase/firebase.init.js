@@ -2,20 +2,16 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQjsF6xlNsU_LKpr5AEc_95UFzd9t9jYY",
-  authDomain: "portfolio-bd274.firebaseapp.com",
-  projectId: "portfolio-bd274",
-  storageBucket: "portfolio-bd274.firebasestorage.app",
-  messagingSenderId: "924694554177",
-  appId: "1:924694554177:web:748eb4102666e69564c8c0"
+  apiKey: "AIzaSyABICbXddnk8ebjovlSGpMBHNBsD8BUqV8",
+  authDomain: "fatema-moumita.firebaseapp.com",
+  projectId: "fatema-moumita",
+  storageBucket: "fatema-moumita.firebasestorage.app",
+  messagingSenderId: "800934372367",
+  appId: "1:800934372367:web:9a499376c4d2998c166f7a"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+export const app = initializeApp(firebaseConfig);
