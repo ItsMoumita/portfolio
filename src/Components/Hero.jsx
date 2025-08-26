@@ -80,7 +80,8 @@ export default function Hero() {
                 Get in Touch
               </button>
 
-              <a
+              <button>
+                <a
                 href="/resume.pdf"
                 download
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-5 py-2.5 text-sm font-semibold text-white hover:border-white/40 hover:shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
@@ -88,6 +89,7 @@ export default function Hero() {
                 <Download size={16} />
                 Download Resume
               </a>
+              </button>
             </motion.div>
           </div>
 
