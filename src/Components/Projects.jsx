@@ -4,11 +4,13 @@ import ShimmerButton from './ShimmerButton';
 import { ExternalLink, Github } from 'lucide-react';
 import {
     SiReact, SiJavascript, SiTailwindcss, SiFramer, SiNodedotjs, SiMongodb, SiExpress, SiTypescript,
+    SiFirebase,
+    SiStripe,
 } from 'react-icons/si';
 
 // Replace with your actual screenshots
 import proj1Img from '../assets/project-1.png';
-import proj2Img from '../assets/project-2.png';
+import proj2Img from '../assets/project2.png';
 import proj3Img from '../assets/project-3.png';
 
 const projects = [
@@ -29,8 +31,26 @@ const projects = [
         repo: 'https://github.com/ItsMoumita/blood-center',
     },
     {
+    title: 'ShopnoBhromon',
+    image: proj2Img,
+    desc:
+        "ShopnoBhromon is a full-stack travel booking platform where users can explore and book tour packages and resorts. It features secure Firebase authentication, Stripe payment integration, advanced filtering, role-based admin dashboards, and full CRUD management for packages, resorts, and bookings.",
+    tech: [
+        { name: 'React', icon: SiReact, color: '#61DAFB' },
+        { name: 'Tailwind', icon: SiTailwindcss, color: '#38BDF8' },
+        { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+        { name: 'Express', icon: SiExpress, color: '#ffffff' },
+        { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+        { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
+        { name: 'Stripe', icon: SiStripe, color: '#635BFF' },
+        { name: 'Framer Motion', icon: SiFramer, color: '#ffffff' },
+    ],
+    live: 'https://shopno-bhromon.web.app/',
+    repo: 'https://github.com/ItsMoumita/shopnobhromon',
+},
+    {
         title: 'E-Study',
-        image: proj2Img,
+        image: proj3Img,
         desc:
             "E-Study is a full-featured assignment management web application that enables students to attempt assignments and evaluators to create, manage, and grade them. It offers a seamless user experience with protected routes, Google & email/password authentication, assignment filtering, and real-time validation.",
         tech: [
@@ -44,23 +64,23 @@ const projects = [
         live: 'https://e-study-efba6.web.app/',
         repo: 'https://github.com/ItsMoumita/e-study',
     },
-    {
-        title: 'PlantCare',
-        image: proj3Img,
-        desc:
-            "A full-stack, mobile-responsive web application designed to help users manage and monitor the care of their indoor and outdoor plants. Built with React, Firebase, TailwindCSS, and more. It features user authentication, plant management, and a visually appealing interface.",
-        tech: [
-            { name: 'React', icon: SiReact, color: '#61DAFB' },
-            { name: 'Tailwind', icon: SiTailwindcss, color: '#38BDF8' },
-            { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-            { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-            { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-            { name: 'Express', icon: SiExpress, color: '#fff' },
+    // {
+    //     title: 'PlantCare',
+    //     image: proj3Img,
+    //     desc:
+    //         "A full-stack, mobile-responsive web application designed to help users manage and monitor the care of their indoor and outdoor plants. Built with React, Firebase, TailwindCSS, and more. It features user authentication, plant management, and a visually appealing interface.",
+    //     tech: [
+    //         { name: 'React', icon: SiReact, color: '#61DAFB' },
+    //         { name: 'Tailwind', icon: SiTailwindcss, color: '#38BDF8' },
+    //         { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+    //         { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+    //         { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+    //         { name: 'Express', icon: SiExpress, color: '#fff' },
 
-        ],
-        live: 'https://plant-care-fc5f9.web.app/',
-        repo: 'https://github.com/ItsMoumita/plant-care-client?tab=readme-ov-file',
-    },
+    //     ],
+    //     live: 'https://plant-care-fc5f9.web.app/',
+    //     repo: 'https://github.com/ItsMoumita/plant-care-client?tab=readme-ov-file',
+    // },
 ];
 
 function TechRow({ tech, align = 'left' }) {

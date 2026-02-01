@@ -1,9 +1,10 @@
+// src/Components/Skills.jsx
 import React, { useMemo, useState, useEffect, memo } from 'react';
 import {
   SiFramer, SiExpress, SiMongodb, SiFirebase, SiC, SiCplusplus, SiGit, SiGithub
 } from 'react-icons/si';
 
-/* ---------------- Icons (your original + added) ---------------- */
+/* ---------------- Icons (original + added) ---------------- */
 const iconComponents = {
   html: {
     component: () => (
@@ -60,15 +61,15 @@ const iconComponents = {
     color: '#06B6D4', label: 'Tailwind CSS'
   },
 
-  // Added
+  // Added (react-icons use currentColor; we pass color prop)
   framer:   { component: () => <SiFramer   className="w-full h-full" color="#A855F7" />, color: '#A855F7', label: 'Framer Motion' },
-express:  { component: () => <SiExpress  className="w-full h-full" color="#FFFFFF" />, color: '#FFFFFF', label: 'Express.js' },
-mongodb:  { component: () => <SiMongodb  className="w-full h-full" color="#47A248" />, color: '#47A248', label: 'MongoDB' },
-firebase: { component: () => <SiFirebase className="w-full h-full" color="#FFCA28" />, color: '#FFCA28', label: 'Firebase' },
-c:        { component: () => <SiC        className="w-full h-full" color="#A8B9CC" />, color: '#A8B9CC', label: 'C' },
-cplusplus:{ component: () => <SiCplusplus className="w-full h-full" color="#00599C" />, color: '#00599C', label: 'C++' },
-git:      { component: () => <SiGit      className="w-full h-full" color="#F05032" />, color: '#F05032', label: 'Git' },
-github:   { component: () => <SiGithub   className="w-full h-full" color="#FFFFFF" />, color: '#FFFFFF', label: 'GitHub' },
+  express:  { component: () => <SiExpress  className="w-full h-full" color="#FFFFFF" />, color: '#FFFFFF', label: 'Express.js' },
+  mongodb:  { component: () => <SiMongodb  className="w-full h-full" color="#47A248" />, color: '#47A248', label: 'MongoDB' },
+  firebase: { component: () => <SiFirebase className="w-full h-full" color="#FFCA28" />, color: '#FFCA28', label: 'Firebase' },
+  c:        { component: () => <SiC        className="w-full h-full" color="#A8B9CC" />, color: '#A8B9CC', label: 'C' },
+  cplusplus:{ component: () => <SiCplusplus className="w-full h-full" color="#00599C" />, color: '#00599C', label: 'C++' },
+  git:      { component: () => <SiGit      className="w-full h-full" color="#F05032" />, color: '#F05032', label: 'Git' },
+  github:   { component: () => <SiGithub   className="w-full h-full" color="#FFFFFF" />, color: '#FFFFFF', label: 'GitHub' },
 };
 
 const SkillIcon = memo(({ type }) => {
@@ -77,7 +78,7 @@ const SkillIcon = memo(({ type }) => {
 });
 SkillIcon.displayName = 'SkillIcon';
 
-/* -------------- Orbit item + path (modified colors to your palette) -------------- */
+/* -------------- Orbit item + path -------------- */
 const OrbitingSkill = memo(({ config, angle }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { orbitRadius, size, iconType, label } = config;
@@ -119,21 +120,21 @@ OrbitingSkill.displayName = 'OrbitingSkill';
 const GlowingOrbitPath = memo(({ radius, glow = 'indigo', animationDelay = 0 }) => {
   const glowMap = {
     indigo: {
-      primary: 'rgba(99, 102, 241, 0.4)', // indigo-500
+      primary: 'rgba(99, 102, 241, 0.4)',
       secondary: 'rgba(99, 102, 241, 0.2)',
       border: 'rgba(99, 102, 241, 0.3)',
     },
     fuchsia: {
-      primary: 'rgba(99, 102, 241, 0.4)', // fuchsia-500
-      secondary: 'rgba(99, 102, 241, 0.2)',
-      border: 'rgba(99, 102, 241, 0.3)',
+      primary: 'rgba(217, 70, 239, 0.4)',
+      secondary: 'rgba(217, 70, 239, 0.2)',
+      border: 'rgba(217, 70, 239, 0.3)',
     },
   };
   const c = glowMap[glow] || glowMap.indigo;
 
   return (
     <div
-      className="absolute scroll-mt-24 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
       style={{ width: `${radius * 2}px`, height: `${radius * 2}px`, animationDelay: `${animationDelay}s` }}
     >
       <div
@@ -151,10 +152,49 @@ const GlowingOrbitPath = memo(({ radius, glow = 'indigo', animationDelay = 0 }) 
 });
 GlowingOrbitPath.displayName = 'GlowingOrbitPath';
 
+/* -------------- Media query hook -------------- */
+function useMediaQuery(query) {
+  const get = () =>
+    typeof window !== 'undefined' && 'matchMedia' in window
+      ? window.matchMedia(query).matches
+      : false;
+
+  const [matches, setMatches] = useState(get);
+
+  useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = (e) => setMatches(e.matches);
+    if (mql.addEventListener) mql.addEventListener('change', onChange);
+    else mql.addListener(onChange);
+    setMatches(mql.matches);
+    return () => {
+      if (mql.removeEventListener) mql.removeEventListener('change', onChange);
+      else mql.removeListener(onChange);
+    };
+  }, [query]);
+
+  return matches;
+}
+
 /* -------------- Orbiting canvas (pauses on hover) -------------- */
 function OrbitingCanvas({ skills }) {
   const [time, setTime] = useState(0);
   const [isPaused, setPaused] = useState(false);
+
+  // Shrink orbits/icons on small screens
+  const isSmall = useMediaQuery('(max-width: 640px)');
+  const radiusScale = isSmall ? 0.72 : 1;
+  const sizeScale = isSmall ? 0.85 : 1;
+
+  const scaledSkills = useMemo(
+    () =>
+      skills.map((cfg) => ({
+        ...cfg,
+        orbitRadius: Math.round(cfg.orbitRadius * radiusScale),
+        size: Math.round(cfg.size * sizeScale),
+      })),
+    [skills, radiusScale, sizeScale]
+  );
 
   useEffect(() => {
     if (isPaused) return;
@@ -171,8 +211,8 @@ function OrbitingCanvas({ skills }) {
   }, [isPaused]);
 
   const orbitPaths = [
-    { radius: 100, glow: 'indigo', delay: 0 },
-    { radius: 180, glow: 'fuchsia', delay: 1.2 },
+    { radius: Math.round(100 * radiusScale), glow: 'indigo', delay: 0 },
+    { radius: Math.round(180 * radiusScale), glow: 'fuchsia', delay: 1.2 },
   ];
 
   return (
@@ -192,7 +232,7 @@ function OrbitingCanvas({ skills }) {
         />
       </div>
 
-      {/* center core with brand glow */}
+      {/* center core */}
       <div className="w-20 h-20 bg-gradient-to-br from-indigo-600/40 to-fuchsia-600/40 rounded-full flex items-center justify-center z-10 relative shadow-2xl">
         <div className="absolute inset-0 rounded-full bg-indigo-500/30 blur-xl animate-pulse"></div>
         <div className="absolute inset-0 rounded-full bg-fuchsia-500/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -212,11 +252,11 @@ function OrbitingCanvas({ skills }) {
 
       {/* orbit paths */}
       {orbitPaths.map((p) => (
-        <GlowingOrbitPath key={`path-${p.radius}`} radius={p.radius} glow={p.glow} animationDelay={p.delay} />
+        <GlowingOrbitPath key={`path-${p.radius}-${p.glow}`} radius={p.radius} glow={p.glow} animationDelay={p.delay} />
       ))}
 
       {/* orbiting icons */}
-      {skills.map((cfg) => {
+      {scaledSkills.map((cfg) => {
         const angle = time * cfg.speed + (cfg.phaseShift || 0);
         return <OrbitingSkill key={cfg.id} config={cfg} angle={angle} />;
       })}
@@ -239,7 +279,6 @@ function makeConfig({ id, orbit, size = 44, speed = 1, phase = 0 }) {
 }
 
 function buildConfigs(list) {
-  // Split into inner (first half) and outer (rest)
   const inner = list.slice(0, Math.ceil(list.length / 2));
   const outer = list.slice(Math.ceil(list.length / 2));
 
@@ -277,16 +316,15 @@ export default function Skills() {
   return (
     <section id="skills" className="relative bg-transparent text-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 md:py-24">
-        {/* Heading */}
         <h2 className="text-center italic font-extrabold leading-tight tracking-tight text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem]">
           <span className="bg-white/90 bg-clip-text text-transparent">
             My Skills
           </span>
         </h2>
 
-        {/* Tabs (capsule like your navbar) */}
+        {/* Tabs */}
         <div className="mt-6 flex justify-center">
-          <div className="rounded-full border border-white/10 bg-black/20/50 backdrop-blur-md -4 p-1 flex items-center gap-2 md:gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+          <div className="rounded-full border border-white/10 bg-black/20/50 backdrop-blur-md p-1 flex items-center gap-2 md:gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
             {[
               { key: 'frontend', label: 'Frontend' },
               { key: 'backend', label: 'Backend' },
