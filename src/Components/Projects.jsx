@@ -46,7 +46,7 @@ const projects = [
         { name: 'Framer Motion', icon: SiFramer, color: '#ffffff' },
     ],
     live: 'https://shopno-bhromon.web.app/',
-    repo: 'https://github.com/ItsMoumita/shopnobhromon',
+    repo: 'https://github.com/ItsMoumita/shopno-bhromon',
 },
     {
         title: 'E-Study',
