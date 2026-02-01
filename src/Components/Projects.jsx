@@ -64,23 +64,7 @@ const projects = [
         live: 'https://e-study-efba6.web.app/',
         repo: 'https://github.com/ItsMoumita/e-study',
     },
-    // {
-    //     title: 'PlantCare',
-    //     image: proj3Img,
-    //     desc:
-    //         "A full-stack, mobile-responsive web application designed to help users manage and monitor the care of their indoor and outdoor plants. Built with React, Firebase, TailwindCSS, and more. It features user authentication, plant management, and a visually appealing interface.",
-    //     tech: [
-    //         { name: 'React', icon: SiReact, color: '#61DAFB' },
-    //         { name: 'Tailwind', icon: SiTailwindcss, color: '#38BDF8' },
-    //         { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-    //         { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-    //         { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-    //         { name: 'Express', icon: SiExpress, color: '#fff' },
-
-    //     ],
-    //     live: 'https://plant-care-fc5f9.web.app/',
-    //     repo: 'https://github.com/ItsMoumita/plant-care-client?tab=readme-ov-file',
-    // },
+   
 ];
 
 function TechRow({ tech, align = 'left' }) {
